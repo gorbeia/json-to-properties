@@ -72,8 +72,11 @@ exports.inflate = function (lines) {
     lines.forEach(function (line) {
         var divider = line.indexOf('='); // Identify the index of the first occurrence of the = symbol
         var key = line.slice(0, divider).trim(); // Extract the key from the line
-        var value = line.slice(divider + 1).trimStart(); // Extract the content of the line, and exclude the divider
-
+        var valueRaw = line.slice(divider + 1); // Extract the content of the line, and exclude the divider
+        var trimmed = valueRaw.trim();
+		var indexOfWord = valueRaw.indexOf(trimmed);
+        var value = valueRaw.slice(indexOfWord, valueRaw.length); // trimStart
+        
         var keys = key.split('.');
         inflateItem(keys, value, result);
     });
