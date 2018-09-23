@@ -87,12 +87,21 @@ describe('parser', function () {
         });
         
 
-        it('properties with spaces', function () {
+        it('properties with spaces [ " A = 1", "  B    =    2   " ]', function () {
             var input = [ ' A = 1', '  B    =    2   ' ];
 
             var output = {
                 A: 1,
                 B: "2   "
+            };
+
+            assert.deepEqual(parser.inflate(input), output);
+        });
+        it('properties with multiline values', function () {
+            var input = [ 'A=1\n\\2' ];
+
+            var output = {
+                A: "1\n2"
             };
 
             assert.deepEqual(parser.inflate(input), output);
