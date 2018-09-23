@@ -85,5 +85,17 @@ describe('parser', function () {
             };
             assert.deepEqual(parser.inflate(input), output);
         });
+        
+
+        it('properties with spaces', function () {
+            var input = [ ' A = 1', '  B    =    2   ' ];
+
+            var output = {
+                A: 1,
+                B: "2   "
+            };
+
+            assert.deepEqual(parser.inflate(input), output);
+        });
     });
 });
