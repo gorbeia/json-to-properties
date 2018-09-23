@@ -74,7 +74,7 @@ exports.inflate = function (lines) {
         var key = line.slice(0, divider).trim(); // Extract the key from the line
         var valueRaw = line.slice(divider + 1); // Extract the content of the line, and exclude the divider
         var trimmed = valueRaw.trim();
-		var indexOfWord = valueRaw.indexOf(trimmed);
+	var indexOfWord = valueRaw.indexOf(trimmed);
         var value = valueRaw.slice(indexOfWord, valueRaw.length); // trimStart
         
         var keys = key.split('.');
